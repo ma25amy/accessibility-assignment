@@ -186,12 +186,9 @@
             
             <button class="bg-indigo-600 hover:bg-indigo-700 p-2 rounded-full shadow-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-400" 
 			onclick="console.log('Close button clicked');"
-			aria-label="Close"
-			>
-			
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+			aria-label="Close">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+			<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
         </div>
@@ -199,16 +196,24 @@
 
     <div class="bg-gray-200 shadow-md border-b border-gray-300">
         <div class="max-w-6xl mx-auto px-4 sm-px-6 lg-px-8 flex space-x-6">
-            <a href="#info" class="py-3 px-4  font-medium text-indigo-800 bg-gray-100 hover:bg-gray-300 rounded-t focus:outline-none focus:ring-2 focus:ring-indigo-400">Conference Info</a>
-            <a href="#schedule" accesskey="s" class="py-3 px-4  font-medium text-indigo-600 bg-gray-100 hover:bg-gray-300 rounded-t focus:outline-none focus:ring-2 focus:ring-indigo-400">Schedule</a>
-            <a href="#sponsors" class="py-3 px-4  font-medium text-indigo-600 bg-gray-100 hover:bg-gray-300 rounded-t focus:outline-none focus:ring-2 focus:ring-indigo-400">Sponsors</a>
+		
+            <a href="#contact-details" class="py-3 px-4  font-medium text-indigo-800 bg-gray-100 hover:bg-gray-300 rounded-t focus:outline-none focus:ring-2 focus:ring-indigo-400">Conference Info</a>
+			
+            <a href="#Schedule-Summary"  class="py-3 px-4  font-medium text-indigo-600 bg-gray-100 
+			hover:bg-gray-300 rounded-t focus:outline-none focus:ring-2 focus:ring-indigo-400">Schedule</a>
+			
+            <a href="#sponsor-info" class="py-3 px-4  font-medium text-indigo-600 bg-gray-100 
+			hover:bg-gray-300 rounded-t focus:outline-none focus:ring-2 focus:ring-indigo-400">
+			Sponsors
+			</a>
+			
+			
+			
+			
         </div>
     </div>
 
-    <table class="w-full max-w-6xl mx-auto layout-table" id="reg-table">
-        <tbody>
-            <tr>
-                <td class="align-top w-2-3">
+                 <div class="max-w-6xl-auto">
                     <form onsubmit="return false;" id="reg-form" class="space-y-6">
                         
                         <section id="contact-details" class="bg-white p-6 rounded-xl shadow-lg">
@@ -235,7 +240,7 @@
                                 <input type="email" id="email" class="p-3 border border-gray-300 rounded-lg focus-ring-2 focus-ring-brand-purple" placeholder="Email (for ticket delivery)">
                             </div>
                             
-                            <p class="mt-1 text-sm text-gray-500" tabindex="5">We will only use this for conference-related updates.</p>
+                            <p class="mt-1 text-sm text-gray-500">We will only use this for conference-related updates.</p>
                             
                             <div class="flex items-center space-x-2 pt-4">
 							
@@ -244,17 +249,18 @@
                             </div>
 
                         </section>
+						 </form>
+            </div>
 
                         <section id="ticket-tracks" class="bg-white p-6 rounded-xl shadow-lg mt-6">
                             <h2 class="text-2xl font-semibold mb-6 text-brand-purple">2. Ticket & Tracks</h2>
                             
                             <div class="flex flex-col mb-4">
-                                <label for="ticket-type" class="mb-1 font-midium"> Ticket Type
-								<span class="sr-only">(required)</span)
-								</label>
+                                <label for="ticket-type" class="mb-1 font-midium"> Ticket Type</label>
+								
 								<select id="ticket-type"
-								        class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
-										aria-required="true">
+								        class="p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+								
 										
                                     <option value="" disabled selected hidden>-- Select Ticket Type --</option>
                                     <option value="standard">Standard Pass ($599)</option>
@@ -263,15 +269,15 @@
                                 </select>
                             </div>
                             
-                            <label for="preferred-tracks" class="mb-3 font-medium block ">
-							Select up to 3 preferred tracks:
-							<span class="text-red-600 font-semibold">(required)</span>
-							</label>
-							<select id="preferred-tracks" required
-							class="p-3 border border-gray-300 rounded-lg focus-ring-2 focus-ring-brand-purple">
-							</select>
+                            <label for="track-selection" class="mb-3 font-medium block required-field" style="opacity: 1; color: rgb(50, 50, 50); rgb(255, 255, 255);">
+							Select up to 3 preferred tracks:</label>
+							<select id="track-selection" name="tracks" multiple>
+							<option value=""track1">Track 1 </option>
+							<option value=""track2">Track 2 </option>
+							<option value=""track3">Track 3 </option>
+							<option value=""track4">Track 4 </option>
 							
-						
+						</select>
 
                             <div id="track-list" class="space-y-2 border border-gray-300 p-3 rounded-lg">
                                 <div class="flex items-center space-x-2">
@@ -311,7 +317,8 @@
                             
                             <div class="space-y-3 mt-4">
                                 <h3 class="text-xl font-medium mb-3">Dietary Needs</h3>
-								
+								<fieldset>
+								<legend for="diet-standard"></legend>
                                 <div class="flex items-start space-x-3">
                                     <input type="radio" name="diet" id="diet-standard" value="standard" class="mt-1 h-4 w-4 text-brand-purple ">
                                     <label for="diet-standard" class="flex-1">
@@ -322,6 +329,7 @@
                                     <input type="radio" name="diet" id="diet-vegan" value="vegan" class="mt-1 h-4 w-4 text-brand-purple">
                                     <label for="diet-vegan" class="flex-1">Vegan</label>
                                 </div>
+								</fieldset>
                                 
                                 <div class="flex items-start space-x-3">
                                     <input type="checkbox" id="email-updates"  name="email-updates" class="h-5 w-5 text-brand-purple rounded"> 
@@ -332,20 +340,26 @@
                         </section>
 
                         <div class="flex items-center mt-6">
-                            <button class="block w-full text-center p-4  font-bold rounded-lg cursor-pointer shadow-md hover:shadow-lg transition duration-200 text-lg text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                            <button type="button" class="block w-full text-center p-4  font-bold rounded-lg cursor-pointer shadow-md hover:shadow-lg transition duration-200 
+							text-lg text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-400"
                                   onclick="register()" style="opacity: 1; color: rgb(50, 50, 50); background-color: rgb(240, 240, 240);">
                                   Register Now
                             </button>
                             
-                            <button class="bg-gray-300 p-4 ml-4 rounded-lg shadow-md" style="transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='#9ca3af'" onmouseout="this.style.backgroundColor='#d1d5db'">
-                                <span style="color: #4b5563;">&#x270E;</span> 
-                            </button>
+                            <button class="bg-gray-300 p-4 ml-4 rounded-lg shadow-md text-gray-700 transition-colors duration-200 hover:bg-gray-400" aria-label="Edit">
+							<span style="color: #4b5563;">&#x270E;</span>
+							</button>
                             
-                            <button class="bg-red-500 p-4 ml-4 rounded-lg shadow-md text-white" onclick="clearForm()" style="transition: background-color 0.2sopacity: 1; color: rgb(50, 50, 50); background-color: rgb(255, 255,255 );" onmouseover="this.style.backgroundColor='#dc2626'" onmouseout="this.style.backgroundColor='#ef4444'">
+                            <button class="bg-red-500 p-4 ml-4 rounded-lg shadow-md text-white transition-colors duration-200 hover:bg-red-600"
+							onclick="clearForm()" aria-label="Clear Form"
+							style="opacity: 1; color: rgb(50, 50, 50); background-color: rgb(255, 255,255 );"> 
+							
                                 &#x2715; 
                             </button>
                         </div>
-                        <div id="reg-status" class="mt-4 text-center text-green-600 font-bold hidden text-lg"></div>
+                        <div id="reg-status" class="mt-4 text-center text-green-600 font-bold hidden text-lg" style="opacity: 1; color: rgb(50, 50, 50); background-color: rgb(255, 255, 2555);">
+                        Registration Successful! See you in October.
+                        </div>
                     </form>
                 </td>
 
@@ -367,19 +381,22 @@
                         
                         <p class="text-sm mt-3">
                             For all terms and conditions, 
-							<a href="/terms" 
-							class="text-indigo-600 underline font-bold hover:text-indigo-800 focus:outline- focus:ring-2 focus:ring-indigo"
-							title="More Details about Terms and Conditions">More Details</a>.
+							<a href="#ticket-tracks" 
+							class="text-indigo-600 underline font-bold hover:text-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-600"
+							title="More Details about Terms and Conditions">View Ticket Tracks.</a>.
                         </p>
                     </section>
                     
                     <section id="speaker-spotlight" class="bg-white p-6 rounded-xl shadow-lg mb-6">
                         <h2 class="text-2xl font-semibold mb-4 text-brand-purple">Keynote Speaker</h2>
+						
                         <div class="flex flex-col items-center">
-                            <a href="#speaker-bio" class="text-brand-purple underline font-bold"  style="opacity: 1; color: rgb(99, 102, 241); background-color: rgb(0, 0, 0);">
+						
+                            <a href="text-brand-purple underline font-bold"  style="opacity: 1; color: rgb(0, 0, 255); background-color: rgb(255, 255, 255);">
                                 <img src="https://placehold.co/150x150/1e3a8a/fde047?text=J.D." alt="picture" class="rounded-full shadow-md mb-2" style="width: 150px; height: 150px; display: block;">
                                 Read J.D. Smith's Bio
                             </a>
+							
                             <p class="text-lg font-medium mt-2">J.D. Smith, CEO TechCorp</p>
                         </div>
                     </section>
@@ -397,7 +414,7 @@
             </tr>
         </tbody>
     </table>
-
+       <section id="Schedule-Summary" class="bg-white p-6 rounded-xl shadow-lg">
     <main class="max-w-6xl mx-auto px-4 sm-px-6 lg-px-8 pt-0">
 
         <div class="bg-white p-6 rounded-xl shadow-lg mt-6 border-l-8 border-brand-purple">
@@ -423,23 +440,31 @@
                     </tr>
                 </tbody>
             </table>
-            
+			
+            <div>
             <h3 class="text-xl font-medium mb-3">Watch Last Year's Promo</h3>
-            <iframe width="100%" height="150" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            <iframe width="100%" height="150" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Youtube vedio player:Rick Astley - Never Gonna Give you Up"
+			frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;dyroscope; picture-in-picture; web-share"
+			allowfullscreen></iframe>
+            </div>
+			
+            <p class="text-sm mt-3 text-justify">This section provides a brief overview of the conference structure. 
+			The full schedule is available via the link above. 
+			We highly recommend reviewing this information to ensure your session choices align with your professional development goals.</p>
             
-            <p class="text-sm mt-3 justified-text">This section provides a brief overview of the conference structure. The full schedule is available via the link above. We highly recommend reviewing this information to ensure your session choices align with your professional development goals.</p>
-            
-            <span class="text-sm font-bold text-brand-purple cursor-pointer mt-4 block" onclick="console.log('Previous section clicked');"
+            <button type="button" class="text-sm font-bold text-brand-purple cursor-pointer mt-4 block" onclick="console.log('Previous section clicked');"
 			style="opacity:1; color: rgb(255, 255, 255); background-color:rgb(50, 50, 50);">
                 &lt; Previous Section
-            </span>
+            </button>
         </div>
-        
+        </section>
         <a href="#top" class="text-indigo-600 hover:text-indigo-800 focus:outline focus:ring-2 focus:ring-indigo-400">Back to Top</a>
         
         <div class="flex flex-col space-y-2 mt-6">
             <h2 class="text-2xl font-semibold mb-2 text-brand-purple">Contact Us</h2>
-            <span onclick="console.log('Email support clicked');" class=" underline cursor-pointer"style="color:#4F46E5; background-color:#E5E7EB;">Email Support Team</span>
+            <button onclick="console.log('Email support clicked');" class=" underline cursor-pointer"style="color:#4F46E5; background-color:#E5E7EB;">
+			Email Support Team
+			</button>
         </div>
 
     </main>
@@ -447,8 +472,8 @@
     <footer class="bg-gray-900 text-gray-500 py-6 mt-8">
         <div class="max-w-6xl mx-auto text-center">
             <p style="opacity: 1; color: rgb(255, 255, 255); background-color: rgb(0, 0, 0);">
-2025 Tech Conference. All rights reserved.
-</p>
+              2025 Tech Conference. All rights reserved.
+            </p>
         </div>
     </footer>
     
